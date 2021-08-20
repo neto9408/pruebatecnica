@@ -18,12 +18,15 @@ export class EditComponent implements OnInit {
 
   
   constructor(private router: Router,private fb:FormBuilder, private userservice: UserService) {    
+    
+    debugger
     const navigation = this.router.getCurrentNavigation();
     this.user = navigation?.extras?.state?.value;
-    this.initForm();
+    //this.initForm();
   }
   
   ngOnInit(): void {
+    debugger
     if (typeof this.user === 'undefined') {
       this.router.navigate(['create']);
     } else {
@@ -32,6 +35,7 @@ export class EditComponent implements OnInit {
   }
 
   onSave(): void {
+    debugger
     console.log('Saved', this.formuser.value);
     if (this.formuser.valid) {
       const employee = this.formuser.value;

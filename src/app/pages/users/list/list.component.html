@@ -5,6 +5,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Correo</th>
             <th scope="col">fecha de Nacimientos</th>
+            <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -13,9 +14,10 @@
             <th scope="row">{{item.name}}</th>
             <td>{{item.email}}</td>
             <td>{{item.fecha}}</td>            
+            <td>{{item.estado}}</td>            
             <td >
-                <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Editar</button>
-                                
+              <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Editar</button>
+              <button type="button" class="btn btn-outline-danger m-1"(clik)="onGoToDelete(item.id)">Eliminar</button>                    
             </td>
           </tr>
         </tbody>

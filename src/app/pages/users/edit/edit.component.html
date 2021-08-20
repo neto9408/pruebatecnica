@@ -10,25 +10,25 @@
       <div class="form-group">
         <label class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
         <div class="col-sm-12">
-          <input type="text" formControlName= "fecha" name="fecha" class="form-control"  >
+          <input type="text" formControlName="fecha" name="fecha" class="form-control"  >
         </div>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-        <input type="email" formControlName= "email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" >
+        <input type="email" formControlName="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" >
         <small id="emailHelp" class="form-text text-muted">Ingrese su correo electronico</small>
       </div>
       <fieldset class="form-group">
         <legend class="mt-4">Estado del usuario</legend>
         <div class="form-check">
           <label class="form-check-label">
-            <input type="radio" formControlName= "estado" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            <input type="radio" formControlName="estado" class="form-check-input" name="optionsRadios" id="activo" value="1" checked="">
             activo
           </label>          
         </div>
         <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" formControlName= "estado" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" checked="">
+              <input type="radio" formControlName="estado" class="form-check-input" name="optionsRadios" id="inactivo" value="0" checked="">
               inactivo
             </label>          
           </div>
