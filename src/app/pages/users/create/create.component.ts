@@ -39,6 +39,7 @@ export class CreateComponent implements OnInit {
       const userId = this.user?.id!;
       this.userservice.onSaveUser(user, userId);
       this.formusercreate.reset();
+      this.onGoBackToList();
     }
 
   }
