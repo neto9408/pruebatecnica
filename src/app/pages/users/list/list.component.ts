@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { UserService } from './../user.service';
 
 @Component({
   selector: 'app-list',
@@ -7,21 +8,34 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  user: any;
-    
-  constructor(private router: Router) { }
+  
+  users$ = this.UserSvc.userlist;
+  
+  
+  navigationExtras: NavigationExtras = {
+    state: {
+      value: null
+    }
+  };
+  constructor(private router: Router, private UserSvc: UserService) { }
 
   ngOnInit(): void {
   }
-
-  edit(item: any): void {
+  onGoToEdit(item: any): void {
     debugger
-    this.user = item;
-    this.router.navigate(['edit'],this.user);
+    //this.navigationExtras.state.value = item;
+    this.router.navigate(['edit'], this.navigationExtras);
   }
-  delete(item: any){
-    this.user = item;
-    alert(['Delete']);
+
+  async onGoToDelete(userId: string): Promise<void> {
+    try {
+      await this.UserSvc.onDeleteUser(userId);
+      alert('Deleted');
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+ 
 
 }

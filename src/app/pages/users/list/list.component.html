@@ -9,13 +9,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="table-info" *ngFor="let item of [0,1,2,3,4]" >
-            <th scope="row">Nestor Morales</th>
-            <td>nestorm94@gmail.com</td>
-            <td>01/0/1994</td>
+          <tr class="table-info" *ngFor="let item of users$ | async" >
+            <th scope="row">{{item.name}}</th>
+            <td>{{item.email}}</td>
+            <td>{{item.fecha}}</td>            
             <td >
-                <button type="button" class="btn btn-outline-warning m-1" (click)="edit(item)">Editar</button>
-                <button type="button" class="btn btn-outline-danger m-1"(clik)="delete(item)">Eliminar</button>                
+                <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Editar</button>
+                                
             </td>
           </tr>
         </tbody>

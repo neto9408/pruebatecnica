@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pruebadane-935b5": {
+      "hosting": {
+        "pruebaTecnica": [
+          "pruebadane-935b5"
+        ]
+      }
+    }
+  }
+}

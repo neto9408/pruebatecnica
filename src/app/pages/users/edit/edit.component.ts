@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/users/models/user.interface';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-edit',
@@ -9,23 +11,38 @@ import { Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
   value: any;
-  
+  user: User;
+  formuser!: FormGroup;
+
   private isEmail = /\S+@\S+\.\S+/;
 
-  formuser!: FormGroup;
-  constructor(private router: Router,private fb:FormBuilder) {    
-   const navigate = this.router.getCurrentNavigation();  
-   this.value = navigate?.extras?.state;   
-
+  
+  constructor(private router: Router,private fb:FormBuilder, private userservice: UserService) {    
+    const navigation = this.router.getCurrentNavigation();
+    this.user = navigation?.extras?.state?.value;
+    this.initForm();
   }
   
   ngOnInit(): void {
-    this.initForm();
+    if (typeof this.user === 'undefined') {
+      this.router.navigate(['create']);
+    } else {
+      this.formuser.patchValue(this.user);
+    }
   }
 
-  onsave():void{
-    debugger
-    console.log('saved',this.formuser.value);
+  onSave(): void {
+    console.log('Saved', this.formuser.value);
+    if (this.formuser.valid) {
+      const employee = this.formuser.value;
+      const userId = this.user?.id!;
+      this.userservice.onSaveUser(employee, userId);
+      this.formuser.reset();
+    }
+
+  }
+  onGoBackToList(): void {
+    this.router.navigate(['list']);
   }
 
   private initForm():void{
