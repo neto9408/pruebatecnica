@@ -35,7 +35,7 @@ export class ListComponent implements OnInit {
     try {
       debugger
       await this.UserSvc.onDeleteUser(userId);
-      alert('Deleted');
+      alert('se a eliminado un usuario');
       this.router.navigate(['list']);
     } catch (err) {
       console.log(err);
