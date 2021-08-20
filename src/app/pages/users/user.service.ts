@@ -18,6 +18,7 @@ export class UserService {
   }
 
   onDeleteUser(userId: string): Promise<void> {
+    debugger
     return new Promise(async (resolve, reject) => {
       try {
         const result = await this.userCollection.doc(userId).delete();

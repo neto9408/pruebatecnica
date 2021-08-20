@@ -31,14 +31,17 @@ export class ListComponent implements OnInit {
   }
 
   async onGoToDelete(userId: any): Promise<void> {
+    debugger
     try {
+      debugger
       await this.UserSvc.onDeleteUser(userId);
       alert('Deleted');
+      this.router.navigate(['list']);
     } catch (err) {
       console.log(err);
     }
   }
-
+  
  
 
 }
